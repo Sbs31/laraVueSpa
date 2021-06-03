@@ -10,6 +10,7 @@ import router from './routes.js';
 import Auth from './auth.js';
 import Api from './api.js';
 
+
 window.api = new Api();
 
 window.auth = new Auth;
@@ -36,10 +37,9 @@ Vue.use(VueRouter);
 
 Vue.component('vue-layout', require('./components/Layout.vue').default);
 Vue.component('tk', require('./components/TK.vue').default)
-/*Vue.component('new-tk', require('./components/NewTK.vue').default)*/
 Vue.component('tk-list', require('./views/TKList').default)
-/*Vue.component('tk-app', require('./components/TKApp.vue').default)*/
 Vue.component('admin', require('./components/Admin.vue').default)
+
 import store from '../js/store'
 
 /**
@@ -53,5 +53,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App}
+  components: {App}
 })

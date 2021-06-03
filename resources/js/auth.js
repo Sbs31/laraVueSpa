@@ -2,32 +2,32 @@ import axios from 'axios';
 class Auth {
 
     constructor () {
-    this.token = window.localStorage.getItem('token');
+        this.token = window.localStorage.getItem('token');
 
-    let userData = window.localStorage.getItem('user');
-    this.user = userData ? JSON.parse(userData) : null;
+        let userData = window.localStorage.getItem('user');
+        this.user = userData ? JSON.parse(userData) : null;
 
-    if (this.token) {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token;
+        if (this.token) {
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.token;
 
-    this.getUser();
+        this.getUser();
+    }
 }
-}
 
-    login (token, user) {        
-    window.localStorage.setItem('token', token);
-    window.localStorage.setItem('user', JSON.stringify(user));
+    login (token, user) {
+        window.localStorage.setItem('token', token);
+        window.localStorage.setItem('user', JSON.stringify(user));
 
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 
-    this.token = token;
-    this.user = user;
+        this.token = token;
+        this.user = user;
 
-    Event.$emit('userLoggedIn');
+        Event.$emit('userLoggedIn');
 	}
     logout(){
-    delete axios.defaults.headers.common['Authorization'];
-    window.localStorage.removeItem('token');
+        delete axios.defaults.headers.common['Authorization'];
+        window.localStorage.removeItem('token');
     }
 
     getUser() {

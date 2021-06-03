@@ -47,19 +47,20 @@ export default {
         });
     },
     methods:{
-      logout(token,user) {
-         axios.get('/api/logout')
-        .then(({data}) => {
-        auth.logout(data.token, data.user);
-        
-        this.authenticated = false;
-        this.user = '';
+      async logout(token,user) {
+         await axios.get('/api/logout')
+            .then(({data}) => {
+            auth.logout(data.token, data.user);
 
-        this.$router.go('/login');
-                })  
-        .catch(error => {
-          alert("Не робит");
-        });       
+            this.authenticated = false;
+
+            this.user = '';
+
+                    })
+          this.$store.commit('setAuthenticated', false);
+          this.$router.go('/login');
+
+
        }
      }
     }
@@ -67,14 +68,14 @@ export default {
 
 <style>
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700italic);
-* { 
+* {
     padding: 0;
-    margin: 0; 
+    margin: 0;
 }
 
-body { 
+body {
     background: #1abc9c;
-    font-family: 'Lato', sans-serif; 
+    font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
 }
 
@@ -100,7 +101,7 @@ header div {
     header {
         height: auto;
     }
-    
+
     header > div,
     header > div h1,
     header nav {
@@ -126,14 +127,14 @@ header a {
   color: #fff;
 }
 header a:hover{
- border-bottom: 1px dashed ; 
+ border-bottom: 1px dashed ;
  cursor: pointer;
 }
 
 .lk ul {
   list-style: none;
   position: relative;
-}    
+}
 
 
 .lk a:hover {

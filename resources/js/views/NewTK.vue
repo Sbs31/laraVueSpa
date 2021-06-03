@@ -5,6 +5,8 @@
       <input id="title" type="text" v-model="newTK.title"/>
       <label for="desc">Описание транспортной компании</label>
       <input id="desc" type="text" v-model="newTK.desc"/>
+      <label for="price">Цена за километр(₽)</label>
+      <input id="price" type="int" v-model="newTK.price"/>
       <label for="link">Ссылка транспортной компании</label>
       <input id="link" type="text" v-model="newTK.link"/>
       <button @click="addTK">Добавить</button>

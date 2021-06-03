@@ -10,6 +10,10 @@ let mutations = {
         },
         DELETE_TK(state, TK) {
             state.TKs.splice(state.TKs.indexOf(TK), 1)
+        },
+        setAuthenticated(state, val) {
+            state.authenticated = val
+            window.localStorage.setItem('authenticated', val);
         }
     }
     export default mutations

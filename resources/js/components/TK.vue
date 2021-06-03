@@ -1,24 +1,32 @@
-<template> 
+<template>
   <div id="items">
     <div class="product-item">
       <div class="product-list">
         <h3>{{TK.title}}</h3>
         <p>{{TK.desc}}</p>
         <a href="#" class="button">Подробнее</a>
-        <button @click="removeTK(TK)">Удалить</button>
+
+        <button v-if="authenticated && authenticated != 'false'"  @click="removeTK(TK)">Удалить</button>
     </div>
   </div>
 </div>
 </template>
 <script>
+    import { mapGetters } from "vuex"
     export default {
       name: "TK",
       props: ["TK"],
+        computed: {
+            ...mapGetters(["authenticated"])
+        },
       methods: {
         removeTK(TK) {
           this.$store.dispatch("DELETE_TK", TK);
           window.location.reload();
         }
+      },
+      mounted() {
+
       }
     };
     </script>

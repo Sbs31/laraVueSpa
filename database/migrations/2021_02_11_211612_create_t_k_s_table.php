@@ -16,6 +16,7 @@ class CreateTKSTable extends Migration
         Schema::create('t_k_s', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('title');
+            $table->integer('price');
             $table->text('link');
             $table->text('desc');
             $table->timestamps();
